@@ -22,102 +22,102 @@ const questions = [
   {
     id: "incomeStability",
     title: "Income Stability",
-    description: "How stable is your current source of income?",
+    description: "How stable is your current source of income? Consider the reliability of your paycheck, the health of your industry, and your job security.",
     min: 1,
     max: 10,
     minLabel: "Highly unstable",
     maxLabel: "Very stable",
-    tip: "Consider factors like job security, industry stability, and your employer's financial health.",
+    tip: "Consider factors like job security, industry stability, your employer's financial health, and whether you have multiple income streams. Industries like healthcare, utilities, and government tend to be more recession-resistant than luxury goods or entertainment.",
   },
   {
     id: "monthlyExpenses",
     title: "Monthly Expenses",
-    description: "What percentage of your monthly income do you spend on essential expenses?",
+    description: "What percentage of your monthly income do you spend on essential expenses? Essential expenses include housing, utilities, food, transportation, insurance, and minimum debt payments.",
     min: 1,
     max: 10,
     minLabel: "90%+ (High)",
     maxLabel: "Below 50% (Low)",
-    tip: "Essential expenses include housing, utilities, food, and transportation.",
+    tip: "Financial experts recommend that essential expenses should ideally be below 50% of your income. The lower your essential expenses ratio, the more financial flexibility you have during economic downturns. Consider which expenses could be reduced quickly if needed.",
   },
   {
     id: "emergencyFund",
     title: "Emergency Fund",
-    description: "How many months of expenses could you cover with your emergency savings?",
+    description: "How many months of expenses could you cover with your emergency savings? This should be money that's easily accessible in high-yield savings accounts or similar liquid assets.",
     min: 1,
     max: 10,
     minLabel: "None",
     maxLabel: "12+ months",
-    tip: "Financial experts typically recommend having 3-6 months of expenses saved.",
+    tip: "Financial experts typically recommend having 3-6 months of expenses saved during normal times, but 6-12 months is better preparation for a recession. Your emergency fund should be in cash or cash equivalents that can be accessed without penalties or market risk.",
   },
   {
     id: "debtToIncome",
     title: "Debt-to-Income Ratio",
-    description: "How would you rate your debt-to-income ratio?",
+    description: "How would you rate your debt-to-income ratio? This is calculated by dividing your total monthly debt payments by your gross monthly income.",
     min: 1,
     max: 10,
     minLabel: "Very high",
     maxLabel: "Very low/no debt",
-    tip: "This includes all debt payments (mortgage, car loans, credit cards, etc.) divided by your monthly income.",
+    tip: "A healthy debt-to-income ratio is typically below 36%. During economic uncertainty, lower is better as it reduces your fixed monthly obligations. Prioritize paying down high-interest debt like credit cards before a recession hits.",
   },
   {
     id: "monthlySavings",
     title: "Monthly Savings Rate",
-    description: "What percentage of your income do you save or invest monthly?",
+    description: "What percentage of your income do you save or invest monthly? This includes retirement contributions, investments, and regular savings.",
     min: 1,
     max: 10,
     minLabel: "0%",
     maxLabel: "30%+",
-    tip: "This includes retirement contributions, investments, and regular savings.",
+    tip: "Aim to save at least 20% of your income. During uncertain economic times, you might want to adjust the allocation between investments and cash savings to build more liquidity. The higher your savings rate, the faster you can recover from financial setbacks.",
   },
   {
     id: "jobMarketability",
     title: "Job Marketability",
-    description: "How easy would it be for you to find a new job if you lost your current one?",
+    description: "How easy would it be for you to find a new job if you lost your current one? Consider your skills, experience, industry demand, and local job market conditions.",
     min: 1,
     max: 10,
     minLabel: "Very difficult",
     maxLabel: "Very easy",
-    tip: "Consider your skills, experience, education, and the demand for your profession.",
+    tip: "Having in-demand, transferable skills across multiple industries provides security during downturns. Update your resume and professional profiles now, and maintain your professional network before you need it. Consider which adjacent industries might value your expertise.",
   },
   {
     id: "investmentDiversity",
     title: "Investment Diversity",
-    description: "How diversified are your investments?",
+    description: "How diversified are your investments across different asset classes, sectors, and geographic regions? Diversification helps reduce risk during market volatility.",
     min: 1,
     max: 10,
     minLabel: "Not diversified",
     maxLabel: "Highly diversified",
-    tip: "Consider the variety of asset classes, sectors, and geographic regions in your portfolio.",
+    tip: "A well-diversified portfolio might include stocks, bonds, real estate, and perhaps some alternative investments appropriate for your risk tolerance. During recessions, historically defensive sectors like utilities, healthcare, and consumer staples tend to outperform, while having some international exposure can protect against domestic downturns.",
   },
   {
     id: "liquidAssets",
     title: "Liquid Assets",
-    description: "How much of your net worth is in liquid assets that can be accessed quickly?",
+    description: "How much of your net worth is in liquid assets that can be accessed quickly without significant penalties or losses? Liquid assets can be converted to cash within days.",
     min: 1,
     max: 10,
     minLabel: "Very little",
     maxLabel: "Substantial amount",
-    tip: "Liquid assets include cash, money market funds, and easily sellable investments.",
+    tip: "Liquid assets include cash, money market funds, and easily sellable investments. During economic uncertainty, having 6-12 months of expenses in liquid assets provides a crucial safety buffer. Avoid having to sell investments at a loss or tap into retirement accounts early.",
   },
   {
     id: "insuranceCoverage",
     title: "Insurance Coverage",
-    description: "How comprehensive is your insurance coverage?",
+    description: "How comprehensive is your insurance coverage across health, disability, life, property, and liability? Adequate insurance prevents financial catastrophes.",
     min: 1,
     max: 10,
     minLabel: "Minimal/none",
     maxLabel: "Comprehensive",
-    tip: "Consider health, disability, life, and property insurance.",
+    tip: "Insurance becomes even more important during economic downturns. Health and disability insurance protect against high medical costs and income loss. Review your policies annually to ensure coverage matches your current situation and consider umbrella policies for additional liability protection.",
   },
   {
     id: "skillUpgradation",
     title: "Skill Development",
-    description: "How frequently do you update your professional skills?",
+    description: "How frequently do you update your professional skills through continuing education, certifications, or training? Staying current in your field maintains your employability.",
     min: 1,
     max: 10,
     minLabel: "Rarely/never",
     maxLabel: "Continuously",
-    tip: "Regular skill upgrades improve your employment prospects during economic downturns.",
+    tip: "Continuous learning keeps you competitive in the job market. During economic downturns, employers often retain employees with the most current, relevant skills. Consider which skills are emerging in your industry and which might become automated or obsolete.",
   },
 ];
 
@@ -176,7 +176,7 @@ const FinancialAssessment = ({ userData, onSubmit }: FinancialAssessmentProps) =
       <Card className="border-t-4 border-t-finance-blue">
         <CardHeader>
           <CardTitle>{question.title}</CardTitle>
-          <CardDescription>{question.description}</CardDescription>
+          <CardDescription className="mt-2">{question.description}</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="py-4">
@@ -194,9 +194,9 @@ const FinancialAssessment = ({ userData, onSubmit }: FinancialAssessmentProps) =
             </div>
           </div>
           
-          <div className="mt-4 bg-blue-50 p-3 rounded-md border border-finance-light-blue">
+          <div className="mt-4 bg-blue-50 p-4 rounded-md border border-finance-light-blue">
             <p className="text-sm text-gray-600">
-              <span className="font-semibold">Tip:</span> {question.tip}
+              <span className="font-semibold">Expert Tip:</span> {question.tip}
             </p>
           </div>
         </CardContent>

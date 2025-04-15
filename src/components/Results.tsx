@@ -7,8 +7,10 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from "@/components/ui/card";
-import { CircleCheck, AlertTriangle, CircleAlert } from "lucide-react";
+import { CircleCheck, AlertTriangle, CircleAlert, HeartHandshake, Sparkles } from "lucide-react";
+import AdSenseTest from "./AdSenseTest";
 
 interface ResultsProps {
   userData: UserData;
@@ -51,6 +53,15 @@ const Results = ({ userData, financialData, riskAssessment, onReset }: ResultsPr
     { name: "Investment Strategy", risk: investmentRisk },
   ];
 
+  const advisorRecommendations = [
+    "Consider consulting a Certified Financial Planner (CFP) to develop a comprehensive recession-readiness strategy tailored to your specific situation.",
+    "A fee-only financial advisor can provide unbiased advice on optimizing your investment portfolio for economic downturns.",
+    "If your debt-to-income ratio is high, a credit counselor can help you develop a debt management plan to reduce your financial vulnerability.",
+    "Tax professionals can identify strategies to maximize tax efficiency during economic uncertainty.",
+    "Insurance specialists can review your coverage to ensure you're adequately protected against major financial risks.",
+    "Retirement specialists can help ensure your long-term plans remain on track despite short-term economic volatility."
+  ];
+
   return (
     <div className="space-y-6">
       <div className="text-center mb-6">
@@ -71,10 +82,10 @@ const Results = ({ userData, financialData, riskAssessment, onReset }: ResultsPr
             </CardTitle>
             <CardDescription>
               {overallRisk <= 3 
-                ? "You're generally well-prepared for economic uncertainty." 
+                ? "You're generally well-prepared for economic uncertainty. Continue to maintain your strong financial position while looking for opportunities to further strengthen weak areas." 
                 : overallRisk <= 6 
-                  ? "You have some vulnerabilities to address to improve your preparedness."
-                  : "Your financial situation needs significant strengthening to weather economic uncertainty."
+                  ? "You have some vulnerabilities to address to improve your preparedness. Focus on the recommendations below to strengthen your financial resilience."
+                  : "Your financial situation needs significant strengthening to weather economic uncertainty. Consider prioritizing the most critical recommendations below."
               }
             </CardDescription>
           </CardHeader>
@@ -111,6 +122,8 @@ const Results = ({ userData, financialData, riskAssessment, onReset }: ResultsPr
           </Card>
         ))}
       </div>
+      
+      <AdSenseTest />
 
       <Card className="border-t-4 border-t-finance-teal mb-8">
         <CardHeader>
@@ -131,6 +144,35 @@ const Results = ({ userData, financialData, riskAssessment, onReset }: ResultsPr
             ))}
           </ul>
         </CardContent>
+      </Card>
+
+      <Card className="border-t-4 border-t-purple-400 mb-8">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <HeartHandshake className="h-5 w-5 text-purple-500" />
+            <span>Professional Financial Guidance</span>
+          </CardTitle>
+          <CardDescription>
+            Consider consulting with these financial professionals for personalized advice
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-3">
+            {advisorRecommendations.map((recommendation, index) => (
+              <li key={index} className="flex gap-3 items-start">
+                <div className="bg-purple-100 rounded-full p-1 mt-0.5">
+                  <Sparkles className="h-4 w-4 text-purple-500" />
+                </div>
+                <span>{recommendation}</span>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+        <CardFooter className="bg-purple-50 border-t border-purple-100">
+          <p className="text-sm text-gray-600">
+            <span className="font-semibold">Remember:</span> While this assessment provides a general overview, a qualified financial professional can offer tailored advice based on your complete financial picture and goals.
+          </p>
+        </CardFooter>
       </Card>
 
       <div className="flex justify-center">
