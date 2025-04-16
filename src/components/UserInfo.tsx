@@ -51,21 +51,21 @@ const UserInfo = ({ onSubmit }: UserInfoProps) => {
 
   return (
     <div>
-      <h2 className="text-2xl font-semibold text-center mb-6">Let's Get Started</h2>
+      <h2 className="text-2xl font-semibold text-center mb-6 animate-fade-in">Let's Get Started</h2>
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="space-y-2">
+        <div className="space-y-2 animate-fade-in stagger-1">
           <Label htmlFor="name">Your Name</Label>
           <Input
             id="name"
             placeholder="Enter your name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className={errors.name ? "border-red-500" : ""}
+            className={`transition-all ${errors.name ? "border-red-500" : "hover:border-finance-blue focus:border-finance-blue"}`}
           />
           {errors.name && <p className="text-sm text-red-500">{errors.name}</p>}
         </div>
         
-        <div className="space-y-2">
+        <div className="space-y-2 animate-fade-in stagger-2">
           <Label htmlFor="age">Your Age</Label>
           <Input
             id="age"
@@ -73,14 +73,18 @@ const UserInfo = ({ onSubmit }: UserInfoProps) => {
             placeholder="Enter your age"
             value={age}
             onChange={(e) => setAge(e.target.value)}
-            className={errors.age ? "border-red-500" : ""}
+            className={`transition-all ${errors.age ? "border-red-500" : "hover:border-finance-blue focus:border-finance-blue"}`}
             min="18"
             max="100"
           />
           {errors.age && <p className="text-sm text-red-500">{errors.age}</p>}
         </div>
         
-        <Button type="submit" className="w-full bg-finance-blue hover:bg-blue-600">
+        <Button 
+          type="submit" 
+          className="w-full bg-finance-blue hover:bg-blue-600 animate-fade-in stagger-3 hover-scale"
+          onClick={() => !errors.name && !errors.age && document.querySelector('button[type="submit"]')?.classList.add('animate-pulse-once')}
+        >
           Continue to Assessment
         </Button>
       </form>

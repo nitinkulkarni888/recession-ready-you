@@ -132,16 +132,16 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-blue-100 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-finance-blue">Recession-Ready You</h1>
+        <div className="text-center mb-8 animate-fade-in">
+          <h1 className="text-4xl font-bold text-finance-blue">Recession-Ready You</h1>
           <p className="mt-2 text-lg text-gray-600">
             Assess your financial preparedness for economic downturns
           </p>
         </div>
         
-        <Card className="shadow-lg">
+        <Card className="shadow-xl animate-scale-in hover-scale border-t-4 border-t-finance-blue">
           <CardContent className="p-6">
             {currentStep === "user-info" && (
               <UserInfo onSubmit={handleUserInfoSubmit} />
@@ -165,7 +165,7 @@ const Index = () => {
           </CardContent>
         </Card>
         
-        <div className="text-center mt-8 text-sm text-gray-500">
+        <div className="text-center mt-8 text-sm text-gray-500 animate-fade-in stagger-2">
           <p>This assessment is for educational purposes only and should not replace professional financial advice.</p>
         </div>
       </div>

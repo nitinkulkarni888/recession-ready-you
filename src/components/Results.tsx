@@ -1,4 +1,3 @@
-
 import { UserData, FinancialData, RiskAssessment } from "@/pages/Index";
 import { Button } from "@/components/ui/button";
 import {
@@ -64,15 +63,15 @@ const Results = ({ userData, financialData, riskAssessment, onReset }: ResultsPr
 
   return (
     <div className="space-y-6">
-      <div className="text-center mb-6">
+      <div className="text-center mb-6 animate-fade-in">
         <h2 className="text-2xl font-semibold">Your Recession Readiness Results</h2>
         <p className="text-muted-foreground">
           Based on your answers, here's how prepared you are for economic uncertainty
         </p>
       </div>
 
-      <div className="mb-8">
-        <Card className={`border-0 ${getRiskBgColor(overallRisk)}`}>
+      <div className="mb-8 animate-fade-in">
+        <Card className={`border-0 ${getRiskBgColor(overallRisk)} hover-scale transition-all duration-300`}>
           <CardHeader>
             <CardTitle className="flex items-center justify-between">
               <span>Overall Risk Level</span>
@@ -92,7 +91,7 @@ const Results = ({ userData, financialData, riskAssessment, onReset }: ResultsPr
           <CardContent>
             <div className="relative h-6 w-full bg-gray-200 rounded-full overflow-hidden">
               <div 
-                className={`h-full ${overallRisk <= 3 ? 'bg-finance-green' : overallRisk <= 6 ? 'bg-finance-yellow' : 'bg-finance-red'}`}
+                className={`h-full ${overallRisk <= 3 ? 'bg-finance-green' : overallRisk <= 6 ? 'bg-finance-yellow' : 'bg-finance-red'} transition-all duration-1000 ease-out`}
                 style={{ width: `${(overallRisk/10) * 100}%` }}
               />
             </div>
@@ -101,8 +100,8 @@ const Results = ({ userData, financialData, riskAssessment, onReset }: ResultsPr
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-        {riskAreas.map((area) => (
-          <Card key={area.name} className="border">
+        {riskAreas.map((area, index) => (
+          <Card key={area.name} className={`border hover-scale transition-all duration-300 animate-fade-in stagger-${index + 1}`}>
             <CardHeader className="pb-2">
               <CardTitle className="text-lg flex items-center gap-2">
                 {getRiskIcon(area.risk)}
@@ -125,7 +124,7 @@ const Results = ({ userData, financialData, riskAssessment, onReset }: ResultsPr
       
       <AdSenseTest />
 
-      <Card className="border-t-4 border-t-finance-teal mb-8">
+      <Card className="border-t-4 border-t-finance-teal mb-8 animate-fade-in hover-scale transition-all duration-300">
         <CardHeader>
           <CardTitle>Personalized Recommendations</CardTitle>
           <CardDescription>
@@ -135,7 +134,7 @@ const Results = ({ userData, financialData, riskAssessment, onReset }: ResultsPr
         <CardContent>
           <ul className="space-y-3">
             {recommendations.map((recommendation, index) => (
-              <li key={index} className="flex gap-3 items-start">
+              <li key={index} className={`flex gap-3 items-start animate-slide-in stagger-${index % 4 + 1}`}>
                 <div className="bg-finance-light-green rounded-full p-1 mt-0.5">
                   <CircleCheck className="h-4 w-4 text-finance-green" />
                 </div>
@@ -146,7 +145,7 @@ const Results = ({ userData, financialData, riskAssessment, onReset }: ResultsPr
         </CardContent>
       </Card>
 
-      <Card className="border-t-4 border-t-purple-400 mb-8">
+      <Card className="border-t-4 border-t-purple-400 mb-8 animate-fade-in hover-scale transition-all duration-300">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <HeartHandshake className="h-5 w-5 text-purple-500" />
@@ -159,7 +158,7 @@ const Results = ({ userData, financialData, riskAssessment, onReset }: ResultsPr
         <CardContent>
           <ul className="space-y-3">
             {advisorRecommendations.map((recommendation, index) => (
-              <li key={index} className="flex gap-3 items-start">
+              <li key={index} className={`flex gap-3 items-start animate-slide-in stagger-${index % 4 + 1}`}>
                 <div className="bg-purple-100 rounded-full p-1 mt-0.5">
                   <Sparkles className="h-4 w-4 text-purple-500" />
                 </div>
@@ -175,8 +174,14 @@ const Results = ({ userData, financialData, riskAssessment, onReset }: ResultsPr
         </CardFooter>
       </Card>
 
-      <div className="flex justify-center">
-        <Button onClick={onReset} className="px-6 bg-finance-blue hover:bg-blue-600">
+      <div className="flex justify-center animate-fade-in stagger-4">
+        <Button 
+          onClick={(e) => {
+            (e.target as HTMLElement).classList.add('animate-pulse-once');
+            setTimeout(onReset, 300);
+          }} 
+          className="px-6 bg-finance-blue hover:bg-blue-600 hover-scale"
+        >
           Start Over
         </Button>
       </div>
