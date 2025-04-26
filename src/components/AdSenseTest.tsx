@@ -1,14 +1,20 @@
 
 import React, { useEffect, useRef } from 'react';
 
+// Add type declaration for the adsbygoogle property on Window
+declare global {
+  interface Window {
+    adsbygoogle: any[];
+  }
+}
+
 const AdSenseTest = () => {
   const adRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
     // Only attempt to load ads if the component is mounted and window.adsbygoogle exists
-    if (adRef.current && window.adsbygoogle !== undefined) {
+    if (adRef.current) {
       try {
-        // @ts-ignore - AdSense is not typed in TypeScript
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       } catch (error) {
         console.error('AdSense load error', error);
