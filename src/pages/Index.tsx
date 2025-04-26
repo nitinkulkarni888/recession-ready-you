@@ -5,6 +5,7 @@ import UserInfo from "@/components/UserInfo";
 import Results from "@/components/Results";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
+import AdSenseTest from "@/components/AdSenseTest";
 
 export type UserData = {
   name: string;
@@ -141,6 +142,9 @@ const Index = () => {
           </p>
         </div>
         
+        {/* Showing an ad at the top of the page */}
+        <AdSenseTest />
+        
         <Card className="shadow-xl animate-scale-in hover-scale border-t-4 border-t-finance-blue">
           <CardContent className="p-6">
             {currentStep === "user-info" && (
@@ -167,6 +171,15 @@ const Index = () => {
         
         <div className="text-center mt-8 text-sm text-gray-500 animate-fade-in stagger-2">
           <p>This assessment is for educational purposes only and should not replace professional financial advice.</p>
+          <div className="mt-2 flex justify-center space-x-4">
+            <a href="/privacy-policy" className="text-finance-blue hover:underline">Privacy Policy</a>
+            <a href="/terms" className="text-finance-blue hover:underline">Terms of Service</a>
+          </div>
+        </div>
+        
+        {/* Showing an ad at the bottom of the page */}
+        <div className="mt-8">
+          <AdSenseTest />
         </div>
       </div>
     </div>
