@@ -1,3 +1,4 @@
+
 import { UserData, FinancialData, RiskAssessment } from "@/pages/Index";
 import { Button } from "@/components/ui/button";
 import {
@@ -64,22 +65,22 @@ const Results = ({ userData, financialData, riskAssessment, onReset }: ResultsPr
   return (
     <div className="space-y-6">
       <div className="text-center mb-6 animate-fade-in">
-        <h2 className="text-2xl font-semibold">Your Recession Readiness Results</h2>
-        <p className="text-muted-foreground">
+        <h2 className="text-2xl font-semibold text-gray-800">Your Recession Readiness Results</h2>
+        <p className="text-gray-600">
           Based on your answers, here's how prepared you are for economic uncertainty
         </p>
       </div>
 
       <div className="mb-8 animate-fade-in">
-        <Card className={`border-0 ${getRiskBgColor(overallRisk)} hover-scale transition-all duration-300`}>
+        <Card className={`border-0 ${getRiskBgColor(overallRisk)} hover-scale transition-all duration-300 finance-card`}>
           <CardHeader>
             <CardTitle className="flex items-center justify-between">
-              <span>Overall Risk Level</span>
+              <span className="text-gray-800">Overall Risk Level</span>
               <span className={`text-2xl ${getRiskColor(overallRisk)}`}>
                 {getRiskLabel(overallRisk)}
               </span>
             </CardTitle>
-            <CardDescription>
+            <CardDescription className="text-gray-600">
               {overallRisk <= 3 
                 ? "You're generally well-prepared for economic uncertainty. Continue to maintain your strong financial position while looking for opportunities to further strengthen weak areas." 
                 : overallRisk <= 6 
@@ -101,9 +102,9 @@ const Results = ({ userData, financialData, riskAssessment, onReset }: ResultsPr
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
         {riskAreas.map((area, index) => (
-          <Card key={area.name} className={`border hover-scale transition-all duration-300 animate-fade-in stagger-${index + 1}`}>
+          <Card key={area.name} className="finance-card border-0 hover-scale transition-all duration-300 animate-fade-in stagger-${index + 1}">
             <CardHeader className="pb-2">
-              <CardTitle className="text-lg flex items-center gap-2">
+              <CardTitle className="text-lg flex items-center gap-2 text-gray-800">
                 {getRiskIcon(area.risk)}
                 <span>{area.name}</span>
               </CardTitle>
@@ -124,10 +125,11 @@ const Results = ({ userData, financialData, riskAssessment, onReset }: ResultsPr
       
       <AdSenseTest />
 
-      <Card className="border-t-4 border-t-finance-teal mb-8 animate-fade-in hover-scale transition-all duration-300">
+      <Card className="finance-card border-0 mb-8 animate-fade-in hover-scale transition-all duration-300 overflow-hidden">
+        <div className="h-1 bg-finance-teal w-full"></div>
         <CardHeader>
-          <CardTitle>Personalized Recommendations</CardTitle>
-          <CardDescription>
+          <CardTitle className="text-gray-800">Personalized Recommendations</CardTitle>
+          <CardDescription className="text-gray-600">
             Actions to strengthen your financial position during economic uncertainty
           </CardDescription>
         </CardHeader>
@@ -138,20 +140,21 @@ const Results = ({ userData, financialData, riskAssessment, onReset }: ResultsPr
                 <div className="bg-finance-light-green rounded-full p-1 mt-0.5">
                   <CircleCheck className="h-4 w-4 text-finance-green" />
                 </div>
-                <span>{recommendation}</span>
+                <span className="text-gray-700">{recommendation}</span>
               </li>
             ))}
           </ul>
         </CardContent>
       </Card>
 
-      <Card className="border-t-4 border-t-purple-400 mb-8 animate-fade-in hover-scale transition-all duration-300">
+      <Card className="finance-card border-0 mb-8 animate-fade-in hover-scale transition-all duration-300 overflow-hidden">
+        <div className="h-1 bg-purple-400 w-full"></div>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+          <CardTitle className="flex items-center gap-2 text-gray-800">
             <HeartHandshake className="h-5 w-5 text-purple-500" />
             <span>Professional Financial Guidance</span>
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="text-gray-600">
             Consider consulting with these financial professionals for personalized advice
           </CardDescription>
         </CardHeader>
@@ -162,7 +165,7 @@ const Results = ({ userData, financialData, riskAssessment, onReset }: ResultsPr
                 <div className="bg-purple-100 rounded-full p-1 mt-0.5">
                   <Sparkles className="h-4 w-4 text-purple-500" />
                 </div>
-                <span>{recommendation}</span>
+                <span className="text-gray-700">{recommendation}</span>
               </li>
             ))}
           </ul>
@@ -180,7 +183,7 @@ const Results = ({ userData, financialData, riskAssessment, onReset }: ResultsPr
             (e.target as HTMLElement).classList.add('animate-pulse-once');
             setTimeout(onReset, 300);
           }} 
-          className="px-6 bg-finance-blue hover:bg-blue-600 hover-scale"
+          className="px-6 finance-button hover-scale"
         >
           Start Over
         </Button>

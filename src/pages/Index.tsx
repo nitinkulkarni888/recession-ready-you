@@ -133,7 +133,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-gray-50">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-8 animate-fade-in">
           <h1 className="text-4xl font-bold text-finance-blue">Recession-Ready You</h1>
@@ -145,7 +145,8 @@ const Index = () => {
         {/* Showing an ad at the top of the page */}
         <AdSenseTest />
         
-        <Card className="shadow-xl animate-scale-in hover-scale border-t-4 border-t-finance-blue">
+        <Card className="shadow-xl animate-scale-in hover-scale finance-card border-0 overflow-hidden">
+          <div className="h-2 finance-gradient-blue w-full"></div>
           <CardContent className="p-6">
             {currentStep === "user-info" && (
               <UserInfo onSubmit={handleUserInfoSubmit} />

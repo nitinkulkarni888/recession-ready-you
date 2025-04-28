@@ -167,16 +167,17 @@ const FinancialAssessment = ({ userData, onSubmit }: FinancialAssessmentProps) =
   return (
     <div className="space-y-6">
       <div className="text-center mb-4">
-        <h2 className="text-2xl font-semibold">{userData.name}'s Financial Assessment</h2>
-        <p className="text-muted-foreground">Question {currentQuestion + 1} of {questions.length}</p>
+        <h2 className="text-2xl font-semibold text-gray-800">{userData.name}'s Financial Assessment</h2>
+        <p className="text-gray-600">Question {currentQuestion + 1} of {questions.length}</p>
       </div>
       
       <Progress value={progress} className="h-2 mb-6" />
       
-      <Card className="border-t-4 border-t-finance-blue">
+      <Card className="finance-card border-0 overflow-hidden">
+        <div className="h-1 finance-gradient-blue w-full"></div>
         <CardHeader>
-          <CardTitle>{question.title}</CardTitle>
-          <CardDescription className="mt-2">{question.description}</CardDescription>
+          <CardTitle className="text-gray-800">{question.title}</CardTitle>
+          <CardDescription className="mt-2 text-gray-600">{question.description}</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="py-4">
@@ -200,15 +201,16 @@ const FinancialAssessment = ({ userData, onSubmit }: FinancialAssessmentProps) =
             </p>
           </div>
         </CardContent>
-        <CardFooter className="flex justify-between">
+        <CardFooter className="flex justify-between bg-gray-50 border-t">
           <Button
             variant="outline"
             onClick={handlePrevious}
             disabled={currentQuestion === 0}
+            className="bg-white"
           >
             Previous
           </Button>
-          <Button onClick={handleNext}>
+          <Button onClick={handleNext} className="finance-button">
             {currentQuestion < questions.length - 1 ? "Next Question" : "See Results"}
           </Button>
         </CardFooter>
