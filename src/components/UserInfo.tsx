@@ -51,33 +51,35 @@ const UserInfo = ({ onSubmit }: UserInfoProps) => {
 
   return (
     <div>
-      <h2 className="text-2xl font-semibold text-center mb-6 animate-fade-in text-gray-800">Let's Get Started</h2>
+      <h2 className="text-2xl font-bold text-center mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+        Let's Get Started
+      </h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="space-y-2 animate-fade-in stagger-1">
-          <Label htmlFor="name" className="text-gray-700">Your Name</Label>
+          <Label htmlFor="name" className="text-gray-700 font-medium">Your Name</Label>
           <Input
             id="name"
             placeholder="Enter your name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className={`transition-all ${errors.name ? "border-red-500" : "hover:border-finance-blue focus:border-finance-blue"} bg-white`}
+            className={`transition-all ${errors.name ? "border-red-500" : "hover:border-blue-400 focus:border-blue-500"} bg-white/80 backdrop-blur-sm hover:bg-white focus:bg-white`}
           />
-          {errors.name && <p className="text-sm text-red-500">{errors.name}</p>}
+          {errors.name && <p className="text-sm text-red-500 animate-fade-in">{errors.name}</p>}
         </div>
         
         <div className="space-y-2 animate-fade-in stagger-2">
-          <Label htmlFor="age" className="text-gray-700">Your Age</Label>
+          <Label htmlFor="age" className="text-gray-700 font-medium">Your Age</Label>
           <Input
             id="age"
             type="number"
             placeholder="Enter your age"
             value={age}
             onChange={(e) => setAge(e.target.value)}
-            className={`transition-all ${errors.age ? "border-red-500" : "hover:border-finance-blue focus:border-finance-blue"} bg-white`}
+            className={`transition-all ${errors.age ? "border-red-500" : "hover:border-blue-400 focus:border-blue-500"} bg-white/80 backdrop-blur-sm hover:bg-white focus:bg-white`}
             min="18"
             max="100"
           />
-          {errors.age && <p className="text-sm text-red-500">{errors.age}</p>}
+          {errors.age && <p className="text-sm text-red-500 animate-fade-in">{errors.age}</p>}
         </div>
         
         <Button 

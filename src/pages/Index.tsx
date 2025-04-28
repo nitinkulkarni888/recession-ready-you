@@ -133,11 +133,19 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-gray-50">
-      <div className="max-w-3xl mx-auto">
+    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-white to-indigo-50 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-r from-blue-100 to-indigo-100 rounded-full opacity-30 animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-l from-blue-100 to-indigo-100 rounded-full opacity-30 animate-pulse" style={{ animationDuration: '10s' }} />
+      </div>
+      
+      <div className="max-w-3xl mx-auto relative z-10">
         <div className="text-center mb-8 animate-fade-in">
-          <h1 className="text-4xl font-bold text-finance-blue">Recession-Ready You</h1>
-          <p className="mt-2 text-lg text-gray-600">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            Recession-Ready You
+          </h1>
+          <p className="mt-2 text-lg text-gray-600 animate-fade-in stagger-1">
             Assess your financial preparedness for economic downturns
           </p>
         </div>
@@ -145,7 +153,7 @@ const Index = () => {
         {/* Showing an ad at the top of the page */}
         <AdSenseTest />
         
-        <Card className="shadow-xl animate-scale-in hover-scale finance-card border-0 overflow-hidden">
+        <Card className="shadow-xl animate-scale-in hover-scale finance-card border-0 overflow-hidden backdrop-blur-sm">
           <div className="h-2 finance-gradient-blue w-full"></div>
           <CardContent className="p-6">
             {currentStep === "user-info" && (
@@ -173,8 +181,8 @@ const Index = () => {
         <div className="text-center mt-8 text-sm text-gray-500 animate-fade-in stagger-2">
           <p>This assessment is for educational purposes only and should not replace professional financial advice.</p>
           <div className="mt-2 flex justify-center space-x-4">
-            <a href="/privacy-policy" className="text-finance-blue hover:underline">Privacy Policy</a>
-            <a href="/terms" className="text-finance-blue hover:underline">Terms of Service</a>
+            <a href="/privacy-policy" className="text-blue-600 hover:text-blue-700 transition-colors hover:underline">Privacy Policy</a>
+            <a href="/terms" className="text-blue-600 hover:text-blue-700 transition-colors hover:underline">Terms of Service</a>
           </div>
         </div>
         
