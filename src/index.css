@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -184,7 +185,20 @@
 /* Ensure ad containers have sufficient spacing from content */
 .ad-container {
   margin: 2rem 0;
-  padding: 0.5rem;
+  padding: 0.75rem;
   background-color: #f9f9f9;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
+  border: 1px solid #eaeaea;
+  position: relative;
+  overflow: hidden;
+}
+
+.ad-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #0EA5E9 0%, #3B82F6 100%);
 }

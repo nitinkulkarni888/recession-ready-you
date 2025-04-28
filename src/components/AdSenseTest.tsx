@@ -14,7 +14,7 @@ const AdSenseTest = () => {
   useEffect(() => {
     // Only attempt to load ads if the component is mounted and window.adsbygoogle exists
     try {
-      if (adRef.current && typeof window !== 'undefined') {
+      if (adRef.current && typeof window !== 'undefined' && window.adsbygoogle) {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       }
     } catch (error) {
@@ -23,7 +23,7 @@ const AdSenseTest = () => {
   }, []);
 
   return (
-    <div className="my-6 text-center relative">
+    <div className="ad-container my-6 text-center relative">
       <div className="text-xs text-gray-500 mb-1">Advertisement</div>
       <div ref={adRef} className="min-height-ad">
         <ins 

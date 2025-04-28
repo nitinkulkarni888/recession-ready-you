@@ -12,8 +12,9 @@ function App() {
     // Load AdSense script only on client-side
     try {
       // Ensure we're only loading this in the browser environment
-      if (typeof window !== 'undefined') {
+      if (typeof window !== 'undefined' && !document.getElementById('google-adsense-script')) {
         const script = document.createElement('script');
+        script.id = 'google-adsense-script';
         script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3899023431262335';
         script.async = true;
         script.crossOrigin = 'anonymous';
