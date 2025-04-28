@@ -165,22 +165,24 @@ const FinancialAssessment = ({ userData, onSubmit }: FinancialAssessmentProps) =
   const currentAnswer = answers[question.id as keyof FinancialData];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 animate-fade-in">
       <div className="text-center mb-4">
-        <h2 className="text-2xl font-semibold text-gray-800">{userData.name}'s Financial Assessment</h2>
+        <h2 className="text-2xl font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+          {userData.name}'s Financial Assessment
+        </h2>
         <p className="text-gray-600">Question {currentQuestion + 1} of {questions.length}</p>
       </div>
       
-      <Progress value={progress} className="h-2 mb-6" />
+      <Progress value={progress} className="h-2 mb-6 bg-gray-100" />
       
       <Card className="finance-card border-0 overflow-hidden">
-        <div className="h-1 finance-gradient-blue w-full"></div>
-        <CardHeader>
-          <CardTitle className="text-gray-800">{question.title}</CardTitle>
-          <CardDescription className="mt-2 text-gray-600">{question.description}</CardDescription>
+        <div className="h-1 bg-gradient-to-r from-blue-100 to-indigo-100 w-full"></div>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-xl text-gray-800 font-semibold">{question.title}</CardTitle>
+          <CardDescription className="mt-2 text-gray-600 text-base">{question.description}</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="py-4">
+          <div className="py-6 px-2">
             <Slider
               defaultValue={[currentAnswer]}
               min={question.min}
@@ -189,28 +191,35 @@ const FinancialAssessment = ({ userData, onSubmit }: FinancialAssessmentProps) =
               onValueChange={handleSliderChange}
               className="mb-6"
             />
-            <div className="flex justify-between text-sm text-gray-500">
-              <span>{question.minLabel}</span>
-              <span>{question.maxLabel}</span>
+            <div className="flex justify-between text-sm">
+              <span className="text-gray-500 bg-gray-50 px-3 py-1 rounded-full text-xs">
+                {question.minLabel}
+              </span>
+              <span className="text-gray-500 bg-gray-50 px-3 py-1 rounded-full text-xs">
+                {question.maxLabel}
+              </span>
             </div>
           </div>
           
-          <div className="mt-4 bg-blue-50 p-4 rounded-md border border-finance-light-blue">
-            <p className="text-sm text-gray-600">
-              <span className="font-semibold">Expert Tip:</span> {question.tip}
+          <div className="mt-4 bg-blue-50/50 p-4 rounded-lg border border-blue-100">
+            <p className="text-sm text-gray-700">
+              <span className="font-medium text-blue-700">Expert Tip:</span> {question.tip}
             </p>
           </div>
         </CardContent>
-        <CardFooter className="flex justify-between bg-gray-50 border-t">
+        <CardFooter className="flex justify-between bg-gray-50/50 border-t border-gray-100 p-4">
           <Button
             variant="outline"
             onClick={handlePrevious}
             disabled={currentQuestion === 0}
-            className="bg-white"
+            className="bg-white hover:bg-gray-50 border-gray-200"
           >
             Previous
           </Button>
-          <Button onClick={handleNext} className="finance-button">
+          <Button 
+            onClick={handleNext} 
+            className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white border-0"
+          >
             {currentQuestion < questions.length - 1 ? "Next Question" : "See Results"}
           </Button>
         </CardFooter>
