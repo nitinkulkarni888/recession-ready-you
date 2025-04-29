@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { UserData, FinancialData } from "@/pages/Index";
 import { Button } from "@/components/ui/button";
@@ -170,7 +171,7 @@ const FinancialAssessment = ({ userData, onSubmit }: FinancialAssessmentProps) =
         <p className="text-gray-600">Question {currentQuestion + 1} of {questions.length}</p>
       </div>
       
-      <Progress value={progress} className="h-2 mb-6" />
+      <Progress value={progress} className="h-2 mb-6 bg-blue-100" />
       
       <Card className="finance-card border-0 overflow-hidden">
         <div className="h-1 finance-gradient-blue w-full"></div>
@@ -179,24 +180,24 @@ const FinancialAssessment = ({ userData, onSubmit }: FinancialAssessmentProps) =
           <CardDescription className="mt-2 text-gray-600">{question.description}</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="py-4">
+          <div className="py-6">
             <Slider
               defaultValue={[currentAnswer]}
               min={question.min}
               max={question.max}
               step={1}
               onValueChange={handleSliderChange}
-              className="mb-6"
+              className="mb-8"
             />
-            <div className="flex justify-between text-sm text-gray-500">
-              <span>{question.minLabel}</span>
-              <span>{question.maxLabel}</span>
+            <div className="flex justify-between text-sm font-medium">
+              <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-200">{question.minLabel}</span>
+              <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-200">{question.maxLabel}</span>
             </div>
           </div>
           
-          <div className="mt-4 bg-blue-50 p-4 rounded-md border border-finance-light-blue">
+          <div className="mt-6 bg-blue-50 p-4 rounded-md border border-finance-light-blue">
             <p className="text-sm text-gray-600">
-              <span className="font-semibold">Expert Tip:</span> {question.tip}
+              <span className="font-semibold text-finance-blue">Expert Tip:</span> {question.tip}
             </p>
           </div>
         </CardContent>
@@ -205,7 +206,7 @@ const FinancialAssessment = ({ userData, onSubmit }: FinancialAssessmentProps) =
             variant="outline"
             onClick={handlePrevious}
             disabled={currentQuestion === 0}
-            className="bg-white"
+            className="bg-white border-gray-300 hover:bg-gray-50"
           >
             Previous
           </Button>
