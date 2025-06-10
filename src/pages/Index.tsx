@@ -133,61 +133,78 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-white to-indigo-50 relative overflow-hidden">
-      {/* Background decoration */}
+    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-50 via-blue-50 via-cyan-50 to-emerald-50 relative overflow-hidden">
+      {/* Enhanced background decoration with vibrant colors */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-r from-blue-100 to-indigo-100 rounded-full opacity-30 animate-pulse" style={{ animationDuration: '8s' }} />
-        <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-l from-blue-100 to-indigo-100 rounded-full opacity-30 animate-pulse" style={{ animationDuration: '10s' }} />
+        <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-r from-purple-200 via-blue-200 to-cyan-200 rounded-full opacity-40 animate-float" style={{ animationDuration: '8s' }} />
+        <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-l from-emerald-200 via-teal-200 to-blue-200 rounded-full opacity-40 animate-float" style={{ animationDuration: '10s', animationDelay: '2s' }} />
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-pink-300 to-purple-300 rounded-full opacity-30 animate-breathe" />
+        <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-gradient-to-r from-orange-300 to-yellow-300 rounded-full opacity-30 animate-breathe" style={{ animationDelay: '1s' }} />
       </div>
       
       <div className="max-w-3xl mx-auto relative z-10">
         <div className="text-center mb-8 animate-fade-in">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 via-blue-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent animate-glow">
             Recession-Ready You
           </h1>
-          <p className="mt-2 text-lg text-gray-600 animate-fade-in stagger-1">
+          <p className="mt-4 text-xl text-gray-600 animate-fade-in stagger-1 font-medium">
             Assess your financial preparedness for economic downturns
           </p>
+          <div className="mt-6 flex justify-center space-x-4 animate-fade-in stagger-2">
+            <div className="w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-pulse"></div>
+            <div className="w-3 h-3 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+            <div className="w-3 h-3 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+          </div>
         </div>
         
-        {/* Showing an ad at the top of the page */}
-        <AdSenseTest />
+        {/* Enhanced AdSense with animation */}
+        <div className="animate-fade-in stagger-3">
+          <AdSenseTest />
+        </div>
         
-        <Card className="shadow-xl animate-scale-in hover-scale finance-card border-0 overflow-hidden backdrop-blur-sm">
-          <div className="h-2 finance-gradient-blue w-full"></div>
-          <CardContent className="p-6">
+        <Card className="shadow-2xl animate-scale-in hover-scale finance-card border-0 overflow-hidden backdrop-blur-sm stagger-4 hover-glow">
+          <div className="h-3 finance-gradient-rainbow w-full animate-rainbow"></div>
+          <CardContent className="p-8">
             {currentStep === "user-info" && (
-              <UserInfo onSubmit={handleUserInfoSubmit} />
+              <div className="animate-fade-in">
+                <UserInfo onSubmit={handleUserInfoSubmit} />
+              </div>
             )}
             
             {currentStep === "assessment" && userData && (
-              <FinancialAssessment 
-                userData={userData} 
-                onSubmit={handleAssessmentSubmit} 
-              />
+              <div className="animate-slide-in">
+                <FinancialAssessment 
+                  userData={userData} 
+                  onSubmit={handleAssessmentSubmit} 
+                />
+              </div>
             )}
             
             {currentStep === "results" && userData && financialData && riskAssessment && (
-              <Results 
-                userData={userData}
-                financialData={financialData}
-                riskAssessment={riskAssessment}
-                onReset={handleReset}
-              />
+              <div className="animate-scale-in">
+                <Results 
+                  userData={userData}
+                  financialData={financialData}
+                  riskAssessment={riskAssessment}
+                  onReset={handleReset}
+                />
+              </div>
             )}
           </CardContent>
         </Card>
         
-        <div className="text-center mt-8 text-sm text-gray-500 animate-fade-in stagger-2">
-          <p>This assessment is for educational purposes only and should not replace professional financial advice.</p>
-          <div className="mt-2 flex justify-center space-x-4">
-            <a href="/privacy-policy" className="text-blue-600 hover:text-blue-700 transition-colors hover:underline">Privacy Policy</a>
-            <a href="/terms" className="text-blue-600 hover:text-blue-700 transition-colors hover:underline">Terms of Service</a>
+        <div className="text-center mt-8 text-sm text-gray-500 animate-fade-in stagger-5">
+          <p className="mb-4 text-base font-medium bg-gradient-to-r from-gray-600 to-gray-800 bg-clip-text text-transparent">
+            This assessment is for educational purposes only and should not replace professional financial advice.
+          </p>
+          <div className="mt-4 flex justify-center space-x-6">
+            <a href="/privacy-policy" className="text-purple-600 hover:text-purple-700 transition-all duration-300 hover:underline hover:scale-105 font-medium">Privacy Policy</a>
+            <a href="/terms" className="text-blue-600 hover:text-blue-700 transition-all duration-300 hover:underline hover:scale-105 font-medium">Terms of Service</a>
           </div>
         </div>
         
-        {/* Showing an ad at the bottom of the page */}
-        <div className="mt-8">
+        {/* Enhanced bottom ad with animation */}
+        <div className="mt-12 animate-fade-in stagger-6">
           <AdSenseTest />
         </div>
       </div>
